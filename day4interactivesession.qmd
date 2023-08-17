@@ -98,7 +98,7 @@ kelvin_conversion <- function(unit_conv, unit_kelvin) {
   }
 }
 
-kelvin_conversion("metric", 40)
+kelvin_conversion("metric", 300)
 ```
 
 K = C + 273.15, C = K - 273.15
