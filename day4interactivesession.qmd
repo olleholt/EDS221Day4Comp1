@@ -4,6 +4,10 @@ format: html
 editor: visual
 ---
 
+```{r}
+library(tidyverse)
+```
+
 ## Functions
 
 Make a function that doubles a value
@@ -104,3 +108,46 @@ kelvin_conversion("metric", 300)
 K = C + 273.15, C = K - 273.15
 
 F = (K − 273.15) × 1.8 + 32
+
+## More Functions
+
+Create a subset within a function, and then return something based on that subset.
+
+```{r}
+
+dog_choice <- data.frame(dog_name = c("Khora", "Teddy", "Homer", "Kona", "Tallie"),
+                         food = c("everything", "salmon", "chicken", "pancakes", " steak"))
+```
+
+```{r}
+dog_menu <- function(enter_dog_name) {
+  dog_subset <- dplyr::filter(dog_choice, dog_name == enter_dog_name)
+  print(paste("My name is", dog_subset$dog_name, "and my favorite food is", dog_subset$food))
+}
+
+dog_menu("Homer")
+```
+
+## Function with a for loop
+
+## *This is confusing to me, review this*
+
+*the column names isn't working*
+
+```{r}
+df_means <- function(df) {
+  for (i in seq_along(df)) {
+    col_mean <- mean(df[[i]], na.rm = TRUE)
+    column_name <- colnames(df[i])
+    print(paste("The mean value of", column_name, "is", col_mean))
+  }
+}
+```
+
+```{r}
+df_means(df = mtcars)
+```
+
+```{r}
+df_means(faithful)
+```
